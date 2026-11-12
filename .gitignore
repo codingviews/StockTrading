@@ -1,0 +1,7 @@
+/.idea/
+/services/api-gateway/.mvn/
+/services/market-data-service/.mvn/
+/services/notification-service/.mvn/
+/services/order-service/.mvn/
+/services/portfolio-service/.mvn/
+/services/user-service/.mvn/
