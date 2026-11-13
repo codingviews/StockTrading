@@ -4,7 +4,7 @@ services:
   # POSTGRES — User, Order, Portfolio databases
   # ─────────────────────────────────────────
   postgres:
-    image: postgres:16
+    image: postgres:18
     container_name: postgres
     environment:
       POSTGRES_USER: postgres
@@ -13,8 +13,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - ./init:/docker-entrypoint-initdb.d:ro   # creates user_db, order_db, portfolio_db
+      - postgres-data:/var/lib/postgresql
+      #- ./init:/docker-entrypoint-initdb.d:ro   # creates user_db, order_db, portfolio_db
     networks:
       - trading-network
     healthcheck:
@@ -27,7 +27,7 @@ services:
   # REDIS — Price cache + Rate limiting
   # ─────────────────────────────────────────
   redis:
-    image: redis:7
+    image: redis:8.10.3
     container_name: redis
     ports:
       - "6379:6379"
@@ -48,7 +48,7 @@ services:
   # → Production recommended from Kafka 3.3+
   # ─────────────────────────────────────────
   kafka:
-    image: confluentinc/cp-kafka:7.4.0
+    image: confluentinc/cp-kafka:8.4.0
     container_name: kafka
     ports:
       - "9092:9092"
